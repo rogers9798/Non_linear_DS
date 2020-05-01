@@ -53,10 +53,17 @@ void delete_peak(vector<int> &heap) {
     down_heapify(heap, 0);
 }
 
-void build_heap(vector<int> &heap) {
+void build_heap_unoptimized(vector<int> &heap) {
     // T = O(nlogn)
     for(int i=0; i<heap.size(); i++) {
         up_heapify(heap, i);
+    }
+}
+
+void build_heap_optimized(vector<int> &heap) {
+    // T = O(n)
+    for(int i=heap.size()-1; i>=0; i--) {
+        down_heapify(heap, i);
     }
 }
 
@@ -77,12 +84,13 @@ int main() {
         int x;
         cin>>x;
         heap.push_back(x);
-        // insert(heap, x);
+        insert(heap, x);
     }
     print(heap);
-    build_heap(heap);
-    print(heap);
-    delete_peak(heap);
-    print(heap);
+    // build_heap_unoptimized(heap);
+    // build_heap_optimized(heap);
+    // print(heap);
+    // delete_peak(heap);
+    // print(heap);
     return 0;
 }
