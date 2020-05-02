@@ -47,7 +47,7 @@ int get_sum(int fenwick_tree[], int index) {
 int main() {
     int n, x;
     cin>>n;
-    int arr[n] = {0};;
+    int arr[n] = {0};
 
     int *fenwick_tree = build_fenwick_tree(arr, n);
     
