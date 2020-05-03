@@ -8,7 +8,6 @@ class FenwickTree
     vector<int> fenwick;  // binary indexed tree
     int n;
 
-
     FenwickTree(vector<int> a) 
     {
         this->n = a.size();
@@ -94,4 +93,10 @@ int main()
     cout<<"New Fenwick Tree : "<<endl;
     f2.print();
 
+    list<FenwickTree>ft;
+    ft.push_back(obj);
+    ft.push_back(f2);
+
+    ft.front().print();
+    ft.back().print();
 }
