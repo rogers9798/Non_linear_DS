@@ -4,11 +4,11 @@ using namespace std;
 
 class FenwickTree 
 {
-    private:
+    public:
     vector<int> fenwick;  // binary indexed tree
     int n;
 
-    public:
+
     FenwickTree(vector<int> a) 
     {
         this->n = a.size();
@@ -49,6 +49,18 @@ class FenwickTree
         return temp+pos;
     }
 
+    FenwickTree copyNupdate(vector<int>arr)
+    {
+        FenwickTree obj = FenwickTree(arr);
+        return obj;
+    }
+
+    void print()
+    {
+        for(int i=0;i<n;i++)
+            cout<<fenwick[i]<<" ";
+        cout<<endl;
+    }
 };
 
 int main()
@@ -71,13 +83,15 @@ int main()
 
     FenwickTree obj = FenwickTree(arr);
     int ans = obj.sum(7);
-
     cout<<ans<<endl;
-    obj.update(4,2);
-    ans = obj.sum(7);
-    cout<<ans<<endl;
-
+    
     cout<<obj.getParent(11)<<endl;
     cout<<obj.getNext(11)<<endl;
+    obj.print();
+
+    arr.push_back(9);
+    FenwickTree f2 = obj.copyNupdate(arr);
+    cout<<"New Fenwick Tree : "<<endl;
+    f2.print();
 
 }
