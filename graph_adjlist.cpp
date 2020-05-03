@@ -1,5 +1,9 @@
 #include <iostream>
+#include <vector>
+#include <queue>
 using namespace std;
+
+int bfs_arr[5];
 
 struct node
 {
@@ -66,6 +70,43 @@ public:
             cout << "\n";
         }
     }
+
+    void BFS(int s, int n)
+    {
+        queue<int> Q;
+        int j = 0;
+        vector<bool> visited(n, false);
+
+        Q.push(s);
+        visited[s] = true;
+        while (!Q.empty())
+        {
+            int v = Q.front();
+            bfs_arr[j] = v;
+            j++;
+            cout << endl;
+            cout << v << " popped from queue \n";
+            Q.pop();
+
+            struct node *ptr = arr[v].head;
+            while (ptr != NULL)
+            {
+
+                if (!visited[ptr->e])
+                {
+                    Q.push(ptr->e);
+                    cout << "pushed " << ptr->e << " to queue" << endl;
+                    visited[ptr->e] = true;
+                    ptr = ptr->next;
+                }
+                else
+                {
+                    cout << ptr->e << " visited\n";
+                    ptr = ptr->next;
+                }
+            }
+        }
+    }
 };
 
 int main()
@@ -85,5 +126,15 @@ int main()
     g.add_edge(2, 3, 60);
 
     g.display();
+    cout << endl;
+
+    g.BFS(1, 5);
+
+    cout << "\nBFS is : \n";
+    for (int k = 0; k < 5; k++)
+    {
+        cout << bfs_arr[k] << " ";
+    }
+
     return 0;
 }
