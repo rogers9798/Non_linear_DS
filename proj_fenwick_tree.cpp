@@ -65,27 +65,31 @@ class FenwickTree
 int main()
 {
     vector<int> arr;
-    arr.push_back(1);
-    arr.push_back(7);
-    arr.push_back(3);
-    arr.push_back(0);
-    arr.push_back(5);
-    arr.push_back(8);
-    arr.push_back(3);
-    arr.push_back(2);
-    arr.push_back(6);
-    arr.push_back(2);
-    arr.push_back(1);
-    arr.push_back(1);
-    arr.push_back(4);
-    arr.push_back(5);
-
+    // arr.push_back(1);
+    // arr.push_back(7);
+    // arr.push_back(3);
+    // arr.push_back(0);
+    // arr.push_back(5);
+    // arr.push_back(8);
+    // arr.push_back(3);
+    // arr.push_back(2);
+    // arr.push_back(6);
+    // arr.push_back(2);
+    // arr.push_back(1);
+    // arr.push_back(1);
+    // arr.push_back(4);
+    // arr.push_back(5);
+    int n,data;
+    cin>>n;
+    for(int i=0;i<n;i++){
+        cin>>data;
+        arr.push_back(data);
+    }
     FenwickTree obj = FenwickTree(arr);
-    int ans = obj.sum(7);
-    cout<<ans<<endl;
+    int ans = obj.sum(2);
     
-    cout<<obj.getParent(11)<<endl;
-    cout<<obj.getNext(11)<<endl;
+    // cout<<obj.getParent(11)<<endl;
+    // cout<<obj.getNext(11)<<endl;
     obj.print();
 
     arr.push_back(9);
